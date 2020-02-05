@@ -1,0 +1,32 @@
+{
+  "name": "picturearchiver",
+  "version": "1.0.0",
+  "description": "Bot that archives pictures and videos sent to a specific discord channel",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "node index.js",
+    "start:dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HachebeDLC/PictureArchiver.git"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "archive",
+    "imgur"
+  ],
+  "author": "HachebeDLC",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HachebeDLC/PictureArchiver/issues"
+  },
+  "homepage": "https://github.com/HachebeDLC/PictureArchiver#readme",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "eslint": "^6.8.0",
+    "nodemon": "^2.0.2"
+  }
+}
