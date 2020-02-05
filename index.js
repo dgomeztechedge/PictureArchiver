@@ -28,4 +28,4 @@ client.on('message', msg => {
     // console.log("Mensaje en canal", msg.channel)
 });
 
-client.login('Njc0NjY0Mzk4OTE2Mjg4NTE3.XjtJPQ.Z_NdwF99dbrW-sHkFgFs3cYU8mE');
+client.login(process.env.token);
