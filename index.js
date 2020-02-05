@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const imgur = require('imgur');
-const config = require('dotenv').config()
 
 const client = new Discord.Client();
 imgur.setClientId('d4c0728985acdf7');

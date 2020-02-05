@@ -23,6 +23,10 @@
   "bugs": {
     "url": "https://github.com/HachebeDLC/PictureArchiver/issues"
   },
+  "engines": {
+    "node": "13.7.0",
+    "npm": "6.13.7"
+  },
   "homepage": "https://github.com/HachebeDLC/PictureArchiver#readme",
   "dependencies": {
     "discord.js": "^11.5.1",
