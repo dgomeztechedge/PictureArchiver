@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const imgur = require('imgur');
 
 const client = new Discord.Client();
-imgur.setClientId('d4c0728985acdf7');
+imgur.setClientId(process.env.client_id);
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
 
@@ -15,7 +15,7 @@ client.on('message', msg => {
             const url = attachments[0].url;
             // [0].url;
             //    imgur.uploadUrl(link, 'MiuEd16')
-            imgur.uploadUrl(url, 'U5RY94tk3VmbKxY')
+            imgur.uploadUrl(url, process.env.delete_hash)
                 .then(function (json) {
                     console.log('Subido!')
                     console.log(json.data.link);
