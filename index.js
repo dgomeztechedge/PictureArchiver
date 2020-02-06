@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const imgur = require('imgur');
 const FormData = require('form-data');
 const axios = require('axios').default;
+import { Readable } from 'stream';
 
 const client = new Discord.Client();
 imgur.setClientId(process.env.client_id);
@@ -33,8 +34,10 @@ client.on('message', msg => {
         axios.get('https://cdn.discordapp.com/attachments/674731136743899146/674885734133399552/animation.gif.mp4')
             .then(x => {
                 const form = new FormData();
-                console.log(x.data)
-                form.append('video', x.data);
+                video = new Readable();
+                video.push(x.data);
+                video.push(null);
+                form.append('video', video);
                 form.append('album', process.env.delete_hash);
                 axios.post('https://api.imgur.com/3/upload', form, {
                         headers: {
@@ -45,7 +48,7 @@ client.on('message', msg => {
                         console.log(data);
                     })
                     .catch(err => {
-                        // console.error(err);
+                        console.error(err);
                     });
             });
     }
