@@ -25,7 +25,20 @@ client.on('message', msg => {
                 });
         }
     } else if (msg.content === '!test') {
-        axios.get('https://cdn.discordapp.com/attachments/674731136743899146/674885734133399552/animation.gif.mp4').then(x => console.log(x))
+        console.log('Oido cocina');
+        var video;
+        axios.get('https://cdn.discordapp.com/attachments/674731136743899146/674885734133399552/animation.gif.mp4')
+            .then(x => {
+                video = Buffer.from(x.data);
+            });
+        var form = new FormData();
+        form.append('video', video);
+        form.append('album', 'MiuEd16')
+        axios.post('https://api.imgur.com/3/upload', form, {
+            headers : {
+                'Authorization': `Client-ID ${process.env.client_id}`
+            }
+        })
     }
     // console.log("Mensaje en canal", msg.channel)
 });
