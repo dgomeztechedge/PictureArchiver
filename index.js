@@ -31,20 +31,26 @@ client.on('message', msg => {
         }
     } else if (msg.content === '!test') {
         console.log('Oido cocina');
-        const form = new FormData();
-        const video = fs.createReadStream(new URL('https://cdn.discordapp.com/attachments/674731136743899146/674885734133399552/animation.gif.mp4'))
-        form.append('video', video);
-        form.append('album', process.env.delete_hash);
-        axios.post('https://api.imgur.com/3/upload', form, {
-                headers: {
-                    'Authorization': `Client-ID ${process.env.client_id}`,
-                    'Content-Type': 'multipart/form-data'
-                }
-            }).then(data => {
-                console.log(data);
+        axios.get('https://cdn.discordapp.com/attachments/674731136743899146/674885734133399552/animation.gif.mp4', {
+                responseType: "stream"
             })
-            .catch(err => {
-                console.error(err);
+            .then(x => {
+                const form = new FormData();
+                // const blob = new Buffer[x.data];
+                // const video = fs.createReadStream(blob);
+                form.append('video', x.data);
+                form.append('album', process.env.delete_hash);
+                axios.post('https://api.imgur.com/3/upload', form, {
+                        headers: {
+                            'Authorization': `Client-ID ${process.env.client_id}`,
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    }).then(data => {
+                        console.log(data);
+                    })
+                    .catch(err => {
+                        console.error(err);
+                    });
             });
     }
 });
