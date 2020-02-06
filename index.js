@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const imgur = require('imgur');
 const FormData = require('form-data');
 const axios = require('axios').default;
-const Readable = require('stream').Readable;
+const fs = require('fs');
 
 const client = new Discord.Client();
 imgur.setClientId(process.env.client_id);
@@ -31,25 +31,20 @@ client.on('message', msg => {
         }
     } else if (msg.content === '!test') {
         console.log('Oido cocina');
-        axios.get('https://cdn.discordapp.com/attachments/674731136743899146/674885734133399552/animation.gif.mp4')
-            .then(x => {
-                const form = new FormData();
-                video = new Readable();
-                video.push(x.data);
-                video.push(null);
-                form.append('video', video);
-                form.append('album', process.env.delete_hash);
-                axios.post('https://api.imgur.com/3/upload', form, {
-                        headers: {
-                            'Authorization': `Client-ID ${process.env.client_id}`,
-                            'Content-Type': 'multipart/form-data'
-                        }
-                    }).then(data => {
-                        console.log(data);
-                    })
-                    .catch(err => {
-                        console.error(err);
-                    });
+        const form = new FormData();
+        const video = fs.createReadStream('https://cdn.discordapp.com/attachments/674731136743899146/674885734133399552/animation.gif.mp4')
+        form.append('video', video);
+        form.append('album', process.env.delete_hash);
+        axios.post('https://api.imgur.com/3/upload', form, {
+                headers: {
+                    'Authorization': `Client-ID ${process.env.client_id}`,
+                    'Content-Type': 'multipart/form-data'
+                }
+            }).then(data => {
+                console.log(data);
+            })
+            .catch(err => {
+                console.error(err);
             });
     }
 });
