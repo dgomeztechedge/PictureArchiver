@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const imgur = require('imgur');
-
+const axios = require('axios').default;
 const client = new Discord.Client();
 imgur.setClientId(process.env.client_id);
 client.on('ready', () => {
@@ -24,6 +24,8 @@ client.on('message', msg => {
                     console.error(err.message);
                 });
         }
+    } else if (msg.content === '!test') {
+        axios.get('https://cdn.discordapp.com/attachments/674731136743899146/674885734133399552/animation.gif.mp4').then(x => console.log(x))
     }
     // console.log("Mensaje en canal", msg.channel)
 });
