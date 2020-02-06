@@ -2,8 +2,7 @@ const Discord = require('discord.js');
 const imgur = require('imgur');
 const FormData = require('form-data');
 const axios = require('axios').default;
-const fs = require('fs');
-
+const Readable = require('stream').Readable;
 const client = new Discord.Client();
 imgur.setClientId(process.env.client_id);
 
@@ -36,8 +35,10 @@ client.on('message', msg => {
             })
             .then(x => {
                 const form = new FormData();
-                const buffer = new Buffer.from(x.data, 'binary');
-                const video = fs.createReadStream(buffer);
+                const buffer = new Buffer.from(x.data);
+                const video = new Readable();
+                video.push(buffer)
+                video.push(null);
                 form.append('video', video);
                 form.append('album', process.env.delete_hash);
                 console.log(form);
