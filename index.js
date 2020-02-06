@@ -39,7 +39,13 @@ client.on('message', msg => {
                 const video = new Readable();
                 video.push(buffer)
                 video.push(null);
-                form.append('video', video);
+                form.append('video', {
+                    value: video,
+                    options: {
+                        filename: 'video.mp4',
+                        contentType: null
+                    }
+                });
                 form.append('album', process.env.delete_hash);
                 console.log(form);
                 axios.post('https://api.imgur.com/3/upload', form, {
