@@ -49,7 +49,7 @@ client.on('message', msg => {
                                 axios.post(`https://api.imgur.com/3/album/${process.env.delete_hash}/add`, formVideo, {
                                     headers: {
                                         'Authorization' : `Client-ID ${process.env.client_id}`,
-                                        ...form.getHeaders(),
+                                        ...formVideo.getHeaders(),
                                     }
                                 }).then(x => {
                                     console.log(x);
@@ -77,6 +77,11 @@ client.on('message', msg => {
             }
         }
 
+    }
+    if (msg.content === '!baguette') {
+        const attachment = new MessageAttachment('https://purepng.com/public/uploads/medium/purepng.com-baguette-breadfood-bakery-fresh-tasty-organic-bread-health-breakfast-wheat-barley-941524622910nebfb.png');
+        // Send the attachment in the message channel
+        message.channel.send(attachment);
     }
 });
 
