@@ -33,6 +33,7 @@ client.on('message', msg => {
         axios.get('https://cdn.discordapp.com/attachments/674731136743899146/674885734133399552/animation.gif.mp4')
             .then(x => {
                 const form = new FormData();
+                console.log(x.data)
                 form.append('video', x.data);
                 form.append('album', process.env.delete_hash);
                 axios.post('https://api.imgur.com/3/upload', form, {
@@ -44,7 +45,7 @@ client.on('message', msg => {
                         console.log(data);
                     })
                     .catch(err => {
-                        console.error(err);
+                        // console.error(err);
                     });
             });
     }
