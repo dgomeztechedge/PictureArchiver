@@ -1,8 +1,12 @@
 const Discord = require('discord.js');
 const imgur = require('imgur');
+const FormData = require('form-data');
 const axios = require('axios').default;
+
 const client = new Discord.Client();
 imgur.setClientId(process.env.client_id);
+
+
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
 
@@ -29,16 +33,18 @@ client.on('message', msg => {
         var video;
         axios.get('https://cdn.discordapp.com/attachments/674731136743899146/674885734133399552/animation.gif.mp4')
             .then(x => {
-                video = Buffer.from(x.data);
+                video = x.data;
+
+                var form = new FormData();
+
+                form.append('video', video);
+                form.append('album', process.env.delete_hash);
+                axios.post('https://api.imgur.com/3/upload', form, {
+                    headers: {
+                        'Authorization': `Client-ID ${process.env.client_id}`
+                    }
+                });
             });
-        var form = new FormData();
-        form.append('video', video);
-        form.append('album', 'MiuEd16')
-        axios.post('https://api.imgur.com/3/upload', form, {
-            headers : {
-                'Authorization': `Client-ID ${process.env.client_id}`
-            }
-        })
     }
     // console.log("Mensaje en canal", msg.channel)
 });
