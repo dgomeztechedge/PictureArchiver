@@ -32,7 +32,7 @@ client.on('message', msg => {
     } else if (msg.content === '!test') {
         console.log('Oido cocina');
         const form = new FormData();
-        const video = fs.createReadStream('https://cdn.discordapp.com/attachments/674731136743899146/674885734133399552/animation.gif.mp4')
+        const video = fs.createReadStream(new URL('https://cdn.discordapp.com/attachments/674731136743899146/674885734133399552/animation.gif.mp4'))
         form.append('video', video);
         form.append('album', process.env.delete_hash);
         axios.post('https://api.imgur.com/3/upload', form, {
