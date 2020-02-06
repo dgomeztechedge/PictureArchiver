@@ -30,16 +30,14 @@ client.on('message', msg => {
         }
     } else if (msg.content === '!test') {
         console.log('Oido cocina');
-        axios.get('https://cdn.discordapp.com/attachments/674731136743899146/674885734133399552/animation.gif.mp4', {
-                responseType: "arraybuffer"
-            })
+        axios.get('https://cdn.discordapp.com/attachments/674731136743899146/674885734133399552/animation.gif.mp4',)
             .then(x => {
                 console.log('Datos', x.data)
                 const form = new FormData();
-                const video = new Readable();
-                video.push(x.data)
-                video.push(null);
-                form.append('video', video, 'video.mp4');
+                // const video = new Readable();
+                // video.push(x.data)
+                // video.push(null);
+                form.append('video', x.data, 'video.mp4');
                 form.append('album', process.env.delete_hash);
                 console.log(form);
                 axios.post('https://api.imgur.com/3/upload', form, {
