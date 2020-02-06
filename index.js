@@ -17,52 +17,70 @@ client.on('message', msg => {
         const attachments = msg.attachments.array()
         if (attachments.length > 0) {
             const url = attachments[0].url;
-            // [0].url;
-            //    imgur.uploadUrl(link, 'MiuEd16')
-            imgur.uploadUrl(url, process.env.delete_hash)
-                .then(function (json) {
-                    console.log('Subido!')
-                    console.log(json.data.link);
-                })
-                .catch(function (err) {
-                    console.error(err.message);
-                });
-        }
-    } else if (msg.content === '!test') {
-        console.log('Oido cocina');
-        axios.get('https://cdn.discordapp.com/attachments/674731136743899146/674885734133399552/animation.gif.mp4', {
-                responseType: "stream"
-            })
-            .then(x => {
-                var video = new Readable({read(){}});
-                x.data.on('data', (chunk) => {
-                    video.push(chunk);
-                });
-                x.data.on('end', () => {
-                    video.push(null);
-                    const form = new FormData();
-                    
-                    form.append('video', video.read(), {
-                        filename: 'video.mp4',
-                        contentType: 'video/*'
-                    });
-                    form.append('album', process.env.delete_hash);
-                    console.log(form);
-                    axios.post('https://api.imgur.com/3/upload', form, {
-                            headers: {
-                                ...form.getHeaders(),
-                                'Authorization': `Client-ID ${process.env.client_id}`,
-                                'Content-Type': 'multipart/form-data'
-                            }
-                        }).then(data => {
-                            console.log('Video Subido a album');
-                        })
-                        .catch(err => {
-                            console.error(err);
+            if (url.endsWith('.mp4')) {
+                axios.get(url, {
+                        responseType: "stream"
+                    })
+                    .then(x => {
+                        var video = new Readable({
+                            read() {}
                         });
-                })
+                        x.data.on('data', (chunk) => {
+                            video.push(chunk);
+                        });
+                        x.data.on('end', () => {
+                            video.push(null);
+                            const form = new FormData();
 
-            });
+                            form.append('video', video.read(), {
+                                filename: 'video.mp4',
+                                contentType: 'video/*'
+                            });
+                            form.append('album', 'MiuEd16');
+                            axios.post('https://api.imgur.com/3/upload', form, {
+                                headers: {
+                                    ...form.getHeaders(),
+                                    'Authorization': `Client-ID ${process.env.client_id}`,
+                                    'Content-Type': 'multipart/form-data'
+                                }
+                            }).then(data => {
+                                const formVideo = new FormData();
+                                formVideo.append('deletehashes', data.data.data.deletehash)
+                                console.log(formVideo)
+                                setTimeout(() => {
+                                    axios.post(`https://api.imgur.com/3/album/${process.env.delete_hash}/add`, formVideo, {
+                                        headers: {
+                                            ...form.getHeaders(),
+                                            'Authorization': `Client-ID ${process.env.client_id}`
+                                        }
+                                    }).then(x => {
+                                        console.log(x.data);
+                                        console.log(Date.now())
+                                        console.log('Video subido al album!')
+                                    }).catch(err => {
+                                        console.error(err);
+                                    })
+                                }, 30000);
+
+                            }).catch(err => {
+                                console.error(err);
+                            });
+                        })
+
+                    });
+            } else {
+                imgur.uploadUrl(url, process.env.delete_hash)
+                    .then(function (json) {
+                        console.log('Subido!')
+                        console.log(json.data.link);
+                    })
+                    .catch(function (err) {
+                        console.error(err.message);
+                    });
+
+            }
+        }
+
     }
 });
 
