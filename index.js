@@ -34,11 +34,10 @@ client.on('message', msg => {
                 responseType: "arraybuffer"
             })
             .then(x => {
-                console.log(x)
+                console.log('Datos', x.data)
                 const form = new FormData();
-                const buffer = new Buffer.from(x.data);
-                const video = new Readable();
-                video.push(buffer)
+                
+                video.push(x.data)
                 video.push(null);
                 form.append('video', video, 'video.mp4');
                 form.append('album', process.env.delete_hash);
