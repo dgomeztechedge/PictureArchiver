@@ -32,14 +32,15 @@ client.on('message', msg => {
     } else if (msg.content === '!test') {
         console.log('Oido cocina');
         axios.get('https://cdn.discordapp.com/attachments/674731136743899146/674885734133399552/animation.gif.mp4', {
-                responseType: "stream"
+                responseType: "arraybuffer"
             })
             .then(x => {
                 const form = new FormData();
-                // const blob = new Buffer[x.data];
-                // const video = fs.createReadStream(blob);
-                form.append('video', x.data);
+                const buffer = new Buffer.from(x.data, 'binary');
+                const video = fs.createReadStream(buffer);
+                form.append('video', video);
                 form.append('album', process.env.delete_hash);
+                console.log(form);
                 axios.post('https://api.imgur.com/3/upload', form, {
                         headers: {
                             'Authorization': `Client-ID ${process.env.client_id}`,
