@@ -34,6 +34,7 @@ client.on('message', msg => {
                 responseType: "arraybuffer"
             })
             .then(x => {
+                console.log(x)
                 const form = new FormData();
                 const buffer = new Buffer.from(x.data);
                 const video = new Readable();
