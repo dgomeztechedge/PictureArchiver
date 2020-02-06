@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const imgur = require('imgur');
 const FormData = require('form-data');
 const axios = require('axios').default;
-import { Readable } from 'stream';
+const Readable = require('stream').Readable;
 
 const client = new Discord.Client();
 imgur.setClientId(process.env.client_id);
