@@ -36,7 +36,7 @@ client.on('message', msg => {
             .then(x => {
                 console.log('Datos', x.data)
                 const form = new FormData();
-                
+                const video = new Readable();
                 video.push(x.data)
                 video.push(null);
                 form.append('video', video, 'video.mp4');
