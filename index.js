@@ -13,7 +13,7 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
-    if (msg.channel.name === 'portrait-media') {
+    if (msg.channel.name === 'portrait-media' && !msg.author.bot) {
         urls = [];
         const attachments = msg.attachments.array()
         if (attachments.length > 0) {
@@ -32,9 +32,9 @@ client.on('message', msg => {
         }
     }
     if (msg.content === '!baguette') {
-        const attachment = new MessageAttachment('https://purepng.com/public/uploads/medium/purepng.com-baguette-breadfood-bakery-fresh-tasty-organic-bread-health-breakfast-wheat-barley-941524622910nebfb.png');
+        const attachment = new Discord.Attachment('https://purepng.com/public/uploads/medium/purepng.com-baguette-breadfood-bakery-fresh-tasty-organic-bread-health-breakfast-wheat-barley-941524622910nebfb.png');
         // Send the attachment in the message channel
-        message.channel.send(attachment);
+        msg.channel.send(attachment);
     }
 });
 
