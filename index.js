@@ -30,29 +30,24 @@ client.on('message', msg => {
         }
     } else if (msg.content === '!test') {
         console.log('Oido cocina');
-        var video;
         axios.get('https://cdn.discordapp.com/attachments/674731136743899146/674885734133399552/animation.gif.mp4')
             .then(x => {
-                video = x.data;
-
-                var form = new FormData();
-
+                const video = x.data;
+                const form = new FormData();
                 form.append('video', video);
                 form.append('album', process.env.delete_hash);
                 axios.post('https://api.imgur.com/3/upload', form, {
-                    headers: {
-                        'Authorization': `Client-ID ${process.env.client_id}`
-                    }
-                }).then((data, err) => {
-                    if (err) {
-                        console.error(err)
-                    } else {
+                        headers: {
+                            'Authorization': `Client-ID ${process.env.client_id}`
+                        }
+                    }).then(data => {
                         console.log(data);
-                    }
-                });
+                    })
+                    .catch(err => {
+                        console.error(err);
+                    });
             });
     }
-    // console.log("Mensaje en canal", msg.channel)
 });
 
 client.login(process.env.token);
