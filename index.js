@@ -45,22 +45,18 @@ client.on('message', msg => {
                                 }
                             }).then(data => {
                                 const formVideo = new FormData();
-                                formVideo.append('deletehashes', data.data.data.deletehash)
-                                console.log(formVideo)
-                                setTimeout(() => {
-                                    axios.post(`https://api.imgur.com/3/album/${process.env.delete_hash}/add`, formVideo, {
-                                        headers: {
-                                            ...form.getHeaders(),
-                                            'Authorization': `Client-ID ${process.env.client_id}`
-                                        }
-                                    }).then(x => {
-                                        console.log(x.data);
-                                        console.log(Date.now())
-                                        console.log('Video subido al album!')
-                                    }).catch(err => {
-                                        console.error(err);
-                                    })
-                                }, 30000);
+                                formVideo.append('deletehashes[]', data.data.data.deletehash)
+                                axios.post(`https://api.imgur.com/3/album/${process.env.delete_hash}/add`, formVideo, {
+                                    headers: {
+                                        'Authorization' : `Client-ID ${process.env.client_id}`,
+                                        ...form.getHeaders(),
+                                    }
+                                }).then(x => {
+                                    console.log(x);
+                                    console.log('Video subido al album!')
+                                }).catch(err => {
+                                    console.error(err);
+                                })
 
                             }).catch(err => {
                                 console.error(err);
