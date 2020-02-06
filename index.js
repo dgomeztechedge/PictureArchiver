@@ -43,6 +43,12 @@ client.on('message', msg => {
                     headers: {
                         'Authorization': `Client-ID ${process.env.client_id}`
                     }
+                }).then((data, err) => {
+                    if (err) {
+                        console.error(err)
+                    } else {
+                        console.log(data);
+                    }
                 });
             });
     }
