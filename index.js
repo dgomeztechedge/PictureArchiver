@@ -25,6 +25,9 @@ client.on('message', msg => {
                 if (x.image) {
                     urls.push(x.image.url)
                 }
+                if (x.thumbnail) {
+                    urls.push(x.thumbnail.proxyURL);
+                }
             });
         }
         if (urls.length > 0) {
