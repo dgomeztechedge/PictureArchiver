@@ -15,13 +15,15 @@ client.on('ready', () => {
 client.on('message', msg => {
     if (msg.channel.name === 'portrait-media' && !msg.author.bot) {
         urls = [];
+        console.log(msg.embeds);
         const attachments = msg.attachments.array()
         if (attachments.length > 0) {
-            urls.push(attachments[0].url);
+            attachments.forEach(x => {
+                urls.push(x.url);
+            });
         }
-        if (msg.embeds.length > 0) {
+        if (Array.isArray(msg.embeds)) {
             msg.embeds.forEach(x => {
-                console.log(x)
                 if (x.image) {
                     urls.push(x.image.url)
                 }
@@ -38,6 +40,24 @@ client.on('message', msg => {
         const attachment = new Discord.Attachment('https://purepng.com/public/uploads/medium/purepng.com-baguette-breadfood-bakery-fresh-tasty-organic-bread-health-breakfast-wheat-barley-941524622910nebfb.png');
         // Send the attachment in the message channel
         msg.channel.send(attachment);
+    }
+});
+
+client.on('messageUpdate', (oldMsg, newMsg) => {
+    if (newMsg.channel.name === 'portrait-media' && !newMsg.author.bot) {
+        if (Array.isArray(newMsg.embeds)) {
+            newMsg.embeds.forEach(x => {
+                if (x.image) {
+                    urls.push(x.image.url)
+                }
+                if (x.thumbnail) {
+                    urls.push(x.thumbnail.proxyURL);
+                }
+            });
+        }
+        if (urls.length > 0) {
+            uploadFiles(urls);
+        }
     }
 });
 
