@@ -66,6 +66,30 @@ client.on('messageUpdate', (oldMsg, newMsg) => {
     }
 });
 
+client.on('messageReactionAdd', (reaction, user) => {
+
+    if (reaction.emoji.name === '⭐') {
+        console.log('Usuario: ', user.id, user.username)
+        const exampleEmbed = new Discord.RichEmbed()
+            .setColor('#0099ff')
+            .setTitle(`${reaction.message.content.slice(0,10)}...`)
+            .setURL(reaction.message.url)
+            .setAuthor(reaction.message.author.username, reaction.message.author.avatarURL)
+            .setDescription(reaction.message.content)
+            .setThumbnail(reaction.message.author.avatarURL)
+            .setTimestamp()
+            .setFooter('Made by Hachebe', client.user.avatarURL);
+        if (reaction.message.attachments.array().length > 0) {
+            exampleEmbed.setImage(reaction.message.attachments.array()[0].proxyURL)
+        }
+        if(reaction.message.embeds > 0 && reaction.message.embeds[0].image){
+            exampleEmbed.setImage(reaction.message.embeds[0].image.url)
+        }
+        user.send(exampleEmbed)
+    }
+
+})
+
 function uploadFiles(urls) {
     urls.forEach(url => {
         if (url.endsWith('.mp4')) {
