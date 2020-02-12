@@ -41,6 +41,11 @@ client.on('message', msg => {
         // Send the attachment in the message channel
         msg.channel.send(attachment);
     }
+    if (msg.content === '!tall') {
+        const attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/656037149254090763/676909895475265546/Screenshot_2020-01-24_at_14.30.43.png');
+        // Send the attachment in the message channel
+        msg.channel.send(attachment);
+    }
 });
 
 client.on('messageUpdate', (oldMsg, newMsg) => {
