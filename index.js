@@ -1,5 +1,7 @@
 const Discord = require('discord.js');
 const imgur = require('imgur');
+const qs = require('querystring')
+
 const FormData = require('form-data');
 const axios = require('axios').default;
 const Readable = require('stream').Readable;
@@ -70,10 +72,10 @@ client.on('raw', packet => {
             // Adds the currently reacting user to the reaction's users collection.
             if (reaction) reaction.users.set(packet.d.user_id, client.users.get(packet.d.user_id));
             // Check which type of event it is before emitting
-                client.emit('messageReactionAdd', reaction, client.users.get(packet.d.user_id));
-            });
-            
-        } else return;
+            client.emit('messageReactionAdd', reaction, client.users.get(packet.d.user_id));
+        });
+
+    } else return;
 });
 client.on('messageUpdate', (oldMsg, newMsg) => {
     if (newMsg.channel.name === 'portrait-media' && !newMsg.author.bot) {
@@ -113,8 +115,9 @@ client.on('messageReactionAdd', (reaction, user) => {
             exampleEmbed.setImage(reaction.message.embeds[0].image.url)
         }
         user.send(exampleEmbed)
-    }
-
+    } else if (reaction.message.channel.name === 'portrait-meta' && reaction.emoji.name === '🎵') {
+        addTrack(reaction.message.content)
+    } else return;
 })
 
 function uploadFiles(urls) {
@@ -178,6 +181,46 @@ function uploadFiles(urls) {
 
         }
     })
+}
+
+function addTrack(msg) {
+    // Primero hacer login, conseguir access_token y despues iniciar proceso de busqueda y añadir
+    // Serán tres llamadas a la API de forma sincrona
+    axios.post('https://accounts.spotify.com/api/token', qs.stringify({
+        "grant_type": "refresh_token",
+        'refresh_token': process.env.spotify_refresh_token
+    }), {
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            Authorization: `Basic ${process.env.clientsecret}`
+        }
+    }).then(x => {
+        const headers_token = {
+            Authorization: `Bearer ${x.data.access_token}`
+        }
+        axios.get('https://api.spotify.com/v1/search', {
+            params: {
+                'q': msg,
+                'type': 'track',
+                'limit': 1
+            },
+            headers: headers_token
+        }).then(y => {
+            const uri_obj = {
+                uris: [y.data.tracks.items[0].uri]
+            }
+            axios.post(`https://api.spotify.com/v1/playlists/${process.env.playlist}/tracks`, JSON.stringify(uri_obj), {
+                headers: headers_token
+            });
+            console.log('Añadida canción', y.data.tracks.items[0].name, ' a playlist')
+        }).catch(err => {
+            console.error(err);
+        });
+
+    }).catch(err => {
+        console.error(err);
+    });
+
 }
 
 client.login(process.env.token);
