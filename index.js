@@ -55,6 +55,21 @@ client.on('message', msg => {
         // Send the attachment in the message channel
         msg.channel.send(attachment);
     }
+    if (msg.content === '!help2') {
+        const exampleEmbed = new Discord.RichEmbed()
+            .setColor('#0099ff')
+            .setAuthor(client.user.username, client.user.avatarURL)
+            .setThumbnail(client.user.avatarURL)
+            .setTitle('Help')
+            .setDescription('Need help with the bot?')
+            .addField('On #portrait-media', 'Pics and videos are archived on https://poalof-media.netlify.com/')
+            .addField("On #portrait-meta", "Add songs to our [p.28 playlist](https://open.spotify.com/playlist/2iPnFRSUoMEdu3Jxcf9XQp?si=qnvsRpyyT1OHxDoLpnIqoQ) by reacting to a song title with 🎵.")
+            .addField('Anywhere on the server', 'Archive messages directly to your DMs by reacting to any message with ⭐')
+            .addField('Fun Stuff', 'Give the !tall and !baguette commands a try')
+            .setTimestamp()
+            .setFooter('Made by Hachebe', client.user.avatarURL);
+        msg.channel.send(exampleEmbed);
+    }
 });
 client.on('raw', packet => {
     // We don't want this to run on unrelated packets
