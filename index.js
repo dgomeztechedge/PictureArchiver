@@ -55,6 +55,15 @@ client.on('message', msg => {
         // Send the attachment in the message channel
         msg.channel.send(attachment);
     }
+    if(msg.content === '!heloisse') {
+        getImage('71WUFaO', msg);
+    }
+    if(msg.content === '!comtesse') {
+        getImage('WGxm33x', msg);
+    }
+    if(msg.content === '!sophie') {
+        getImage('DGJuM0i', msg);
+    }
     if (msg.content === '!help2') {
         const exampleEmbed = new Discord.RichEmbed()
             .setColor('#0099ff')
@@ -195,6 +204,17 @@ function uploadFiles(urls) {
                 });
 
         }
+    })
+}
+
+async function getImage(album, msg){
+    axios.get(`https://api.imgur.com/3/album/${album}/images`, {
+        headers: {
+            Authorization: 'Client-ID d4c0728985acdf7'
+        }
+    }).then(x => {
+        const img = new Discord.Attachment(x.data.data[Math.floor(Math.random() * x.data.data.length)].link)
+        msg.channel.send(img);
     })
 }
 
