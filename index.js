@@ -58,6 +58,9 @@ client.on('message', msg => {
     if(msg.content === '!heloisse') {
         getImage('71WUFaO', msg);
     }
+    if(msg.content === '!marianne') {
+        getImage('v7zL3ep', msg);
+    }
     if(msg.content === '!comtesse') {
         getImage('WGxm33x', msg);
     }
