@@ -55,6 +55,11 @@ client.on('message', msg => {
         // Send the attachment in the message channel
         msg.channel.send(attachment);
     }
+    if (msg.content === '!looking') {
+        const attachment = new Discord.Attachment('https://i.imgur.com/ZgLShiJ.jpg');
+        // Send the attachment in the message channel
+        msg.channel.send(attachment);
+    }
     if(msg.content === '!heloisse') {
         getImage('71WUFaO', msg);
     }
@@ -67,6 +72,7 @@ client.on('message', msg => {
     if(msg.content === '!sophie') {
         getImage('DGJuM0i', msg);
     }
+    
     if (msg.content === '!help2') {
         const exampleEmbed = new Discord.RichEmbed()
             .setColor('#0099ff')
