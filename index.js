@@ -60,6 +60,16 @@ client.on('message', msg => {
         // Send the attachment in the message channel
         msg.channel.send(attachment);
     }
+     if (msg.content === '!notlooking') {
+        const attachment = new Discord.Attachment('https://media.discordapp.net/attachments/647500826243497984/688664691509428227/IMG_20200315_092538.jpg');
+        // Send the attachment in the message channel
+        msg.channel.send(attachment);
+    }
+     if (msg.content === '!top') {
+        const attachment = new Discord.Attachment('https://66.media.tumblr.com/52021eab102809cc0b844d34b73bb884/bdf366cfde6587e1-84/s540x810/9be02b3a5a8d4bd98e0f7c93e03ca4f01345478a.gif');
+        // Send the attachment in the message channel
+        msg.channel.send(attachment);
+    }
     if(msg.content === '!heloisse') {
         getImage('71WUFaO', msg);
     }
