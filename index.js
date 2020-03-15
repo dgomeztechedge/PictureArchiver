@@ -75,7 +75,7 @@ client.on('message', msg => {
         // Send the attachment in the message channel
         msg.channel.send(attachment);
     }
-    if (msg.content === '!buffering') {
+    if (msg.content === '!lipbite') {
         const attachment = new Discord.Attachment('https://media.discordapp.net/attachments/647500826243497984/688818471387398205/tumblr_5c7fc759ccd9894fa0330ea9800ea27d_8bcecfe7_540.jpg');
         // Send the attachment in the message channel
         msg.channel.send(attachment);
