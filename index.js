@@ -77,6 +77,9 @@ client.on('message', msg => {
     }
     if (msg.content === '!lipbite') {
         const attachment = new Discord.Attachment('https://media.discordapp.net/attachments/647500826243497984/688818471387398205/tumblr_5c7fc759ccd9894fa0330ea9800ea27d_8bcecfe7_540.jpg');
+        msg.channel.send(attachment);
+
+    }
     if (msg.content === '!norights') {
         const attachment = new Discord.Attachment('https://media.discordapp.net/attachments/647495036770189312/690693127220101180/image0.jpg');
         // Send the attachment in the message channel
