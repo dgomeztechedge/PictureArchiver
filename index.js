@@ -119,7 +119,7 @@ client.on('message', msg => {
             .setColor('#0099ff')
             .setAuthor(client.user.username, client.user.avatarURL)
             .setThumbnail(client.user.avatarURL)
-            .setTitle('Help for new commers')
+            .setTitle('Help for newcomers')
             .setDescription('Need help?')
             .addField('How To Start', 'Write the !yes command to become a member')
             .addField('Pronouns', 'Use the !hehim, !sheher or !theythem command the get a tag with your preffered pronouns. You can also use the !askforpronouns if you prefer')
