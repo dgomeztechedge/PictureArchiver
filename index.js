@@ -77,6 +77,8 @@ client.on('message', msg => {
     }
     if (msg.content === '!lipbite') {
         const attachment = new Discord.Attachment('https://media.discordapp.net/attachments/647500826243497984/688818471387398205/tumblr_5c7fc759ccd9894fa0330ea9800ea27d_8bcecfe7_540.jpg');
+    if (msg.content === '!norights') {
+        const attachment = new Discord.Attachment('https://media.discordapp.net/attachments/647495036770189312/690693127220101180/image0.jpg');
         // Send the attachment in the message channel
         msg.channel.send(attachment);
     }
@@ -102,8 +104,23 @@ client.on('message', msg => {
             .setDescription('Need help with the bot?')
             .addField('On #portrait-media', 'Pics and videos are archived on https://poalof-media.netlify.com/')
             .addField("On #portrait-meta", "Add songs to our [p.28 playlist](https://open.spotify.com/playlist/2iPnFRSUoMEdu3Jxcf9XQp?si=qnvsRpyyT1OHxDoLpnIqoQ) by reacting to a song title with 🎵.")
+            .addField('ML Bot', 'Send !heloisse, !marianne, !sophie or !comtesse to get a random pic of your favourite character!')
             .addField('Anywhere on the server', 'Archive messages directly to your DMs by reacting to any message with ⭐')
             .addField('Fun Stuff', 'Give the !tall and !baguette commands a try')
+            .setTimestamp()
+            .setFooter('Made by Hachebe', client.user.avatarURL);
+        msg.channel.send(exampleEmbed);
+    }
+    if (msg.content === '!introduction') {
+        const exampleEmbed = new Discord.RichEmbed()
+            .setColor('#0099ff')
+            .setAuthor(client.user.username, client.user.avatarURL)
+            .setThumbnail(client.user.avatarURL)
+            .setTitle('Help for new commers')
+            .setDescription('Need help?')
+            .addField('How To Start', 'Write the !yes command to become a member')
+            .addField('Pronouns', 'Use the !hehim, !sheher or !theythem command the get a tag with your preffered pronouns. You can also use the !askforpronouns if you prefer')
+            .addField('Sexy Stuff', 'Want to check behind the curtain? Use the !18 and join the [redacted]')
             .setTimestamp()
             .setFooter('Made by Hachebe', client.user.avatarURL);
         msg.channel.send(exampleEmbed);
