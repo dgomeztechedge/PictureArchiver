@@ -80,6 +80,11 @@ client.on('message', msg => {
         msg.channel.send(attachment);
 
     }
+    if (msg.content === '!butt') {
+        const attachment = new Discord.Attachment('https://media.discordapp.net/attachments/647495036770189312/690711313873371136/my_butt.jpg');
+        msg.channel.send(attachment);
+
+    }
     if (msg.content === '!norights') {
         const attachment = new Discord.Attachment('https://media.discordapp.net/attachments/647495036770189312/690693127220101180/image0.jpg');
         // Send the attachment in the message channel
