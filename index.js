@@ -90,6 +90,11 @@ client.on('message', msg => {
         // Send the attachment in the message channel
         msg.channel.send(attachment);
     }
+    if (msg.content === '!norightsplus') {
+        const attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/647500826243497984/692146050366177361/norights.gif');
+        // Send the attachment in the message channel
+        msg.channel.send(attachment);
+    }
     if(msg.content === '!heloisse') {
         getImage('71WUFaO', msg);
     }
