@@ -47,32 +47,26 @@ client.on('message', msg => {
     }
     if (msg.content === '!baguette') {
         const attachment = new Discord.Attachment('https://purepng.com/public/uploads/medium/purepng.com-baguette-breadfood-bakery-fresh-tasty-organic-bread-health-breakfast-wheat-barley-941524622910nebfb.png');
-        // Send the attachment in the message channel
         msg.channel.send(attachment);
     }
     if (msg.content === '!tall') {
         const attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/656037149254090763/676909895475265546/Screenshot_2020-01-24_at_14.30.43.png');
-        // Send the attachment in the message channel
         msg.channel.send(attachment);
     }
     if (msg.content === '!looking') {
         const attachment = new Discord.Attachment('https://i.imgur.com/ZgLShiJ.jpg');
-        // Send the attachment in the message channel
         msg.channel.send(attachment);
     }
      if (msg.content === '!notlooking') {
         const attachment = new Discord.Attachment('https://media.discordapp.net/attachments/647500826243497984/688664691509428227/IMG_20200315_092538.jpg');
-        // Send the attachment in the message channel
         msg.channel.send(attachment);
     }
      if (msg.content === '!top') {
         const attachment = new Discord.Attachment('https://66.media.tumblr.com/52021eab102809cc0b844d34b73bb884/bdf366cfde6587e1-84/s540x810/9be02b3a5a8d4bd98e0f7c93e03ca4f01345478a.gif');
-        // Send the attachment in the message channel
         msg.channel.send(attachment);
     }
      if (msg.content === '!buffering') {
         const attachment = new Discord.Attachment('https://i.imgur.com/UzXrgnl.gif');
-        // Send the attachment in the message channel
         msg.channel.send(attachment);
     }
     if (msg.content === '!lipbite') {
@@ -87,12 +81,14 @@ client.on('message', msg => {
     }
     if (msg.content === '!norights') {
         const attachment = new Discord.Attachment('https://media.discordapp.net/attachments/647495036770189312/690693127220101180/image0.jpg');
-        // Send the attachment in the message channel
         msg.channel.send(attachment);
     }
     if (msg.content === '!norightsplus') {
         const attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/647500826243497984/692146050366177361/norights.gif');
-        // Send the attachment in the message channel
+        msg.channel.send(attachment);
+    }
+    if (msg.content === '!deadass') {
+        const attachment = new Discord.Attachment('https://media.discordapp.net/attachments/690724839043891210/692589753433849916/AqvkIMu.png');
         msg.channel.send(attachment);
     }
     if(msg.content === '!heloisse') {
