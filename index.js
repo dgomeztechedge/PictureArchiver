@@ -91,6 +91,18 @@ client.on('message', msg => {
         const attachment = new Discord.Attachment('https://media.discordapp.net/attachments/690724839043891210/692589753433849916/AqvkIMu.png');
         msg.channel.send(attachment);
     }
+    if (msg.content === '!danceadele') {
+        const attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/647500826243497984/693933609102344192/adele-dancing.gif');
+        msg.channel.send(attachment);
+    }
+    if (msg.content === '!dancenoemie') {
+        const attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/647500826243497984/693933612357386250/noemie-dance-very_big.gif');
+        msg.channel.send(attachment);
+    }
+    if (msg.content === '!danceceline') {
+        const attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/647500826243497984/693933610343858207/celine-dancing.gif');
+        msg.channel.send(attachment);
+    }
     if(msg.content === '!heloisse') {
         getImage('71WUFaO', msg);
     }
