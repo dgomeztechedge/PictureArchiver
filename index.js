@@ -96,11 +96,11 @@ client.on('message', msg => {
         msg.channel.send(attachment);
     }
     if (msg.content === '!dancenoemie') {
-        const attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/647500826243497984/693933612357386250/noemie-dance-very_big.gif');
+        const attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/690724839043891210/693946748535832626/noemie-dance.gif');
         msg.channel.send(attachment);
     }
     if (msg.content === '!danceceline') {
-        const attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/647500826243497984/693933610343858207/celine-dancing.gif');
+        const attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/690724839043891210/693946743754326076/celine-dancing.gif ');
         msg.channel.send(attachment);
     }
     if(msg.content === '!heloisse') {
