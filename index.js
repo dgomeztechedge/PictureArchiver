@@ -100,7 +100,11 @@ client.on('message', msg => {
         msg.channel.send(attachment);
     }
     if (msg.content === '!danceceline') {
-        const attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/690724839043891210/693946743754326076/celine-dancing.gif ');
+        const attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/690724839043891210/693946743754326076/celine-dancing.gif');
+        msg.channel.send(attachment);
+    }
+    if (msg.content === '!salami') {
+        const attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/647500826243497984/696087810876243968/158597756340089432.gif');
         msg.channel.send(attachment);
     }
     if(msg.content === '!heloisse') {
