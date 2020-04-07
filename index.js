@@ -107,6 +107,16 @@ client.on('message', msg => {
         const attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/647500826243497984/696087810876243968/158597756340089432.gif');
         msg.channel.send(attachment);
     }
+    if (msg.content === '!fistme') {
+        let attachment;
+        if (msg.author.id === '428294204444114946') {
+            attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/647500826243497984/696822170344751184/EU8a9HdUwAASgxN.png');
+
+        } else {
+            attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/690724839043891210/696948390214500363/celine-fist-me.gif');
+        }
+        msg.channel.send(attachment);
+    }
     if(msg.content === '!heloisse') {
         getImage('71WUFaO', msg);
     }
