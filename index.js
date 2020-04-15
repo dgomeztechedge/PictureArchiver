@@ -146,6 +146,18 @@ client.on('message', msg => {
             .setFooter('Made by Hachebe', client.user.avatarURL);
         msg.channel.send(exampleEmbed);
     }
+    if (msg.content === '!baguette-lore') {
+        const exampleEmbed = new Discord.RichEmbed()
+            .setColor('#0099ff')
+            .setAuthor(client.user.username, client.user.avatarURL)
+            .setThumbnail('https://purepng.com/public/uploads/medium/purepng.com-baguette-breadfood-bakery-fresh-tasty-organic-bread-health-breakfast-wheat-barley-941524622910nebfb.png')
+            .setTitle('Help for newcomers- by Jenny')
+            .setDescription(`anyways...I think now is the time for the breadtalk TED talk. You may have noticed we use a the baguette emoji and !baguette command often. These are symbols of approbation/agreement generally, but it's kind of evolving fluidly to mean other things. As noted, we have our own language in this Discord. We initially chose the baguette for approbation because some doofus started a hunger thread that involved a lot of pics of yummy breads, frilly jumped in saying she was not a bread fan, we teased her, and it stuck. Also baguettes, like Portrait, are French. it fits.
+Sooooo, early on in our convos, the horny started coming out because this is a very sexy movie. the baguettes reappeared, recontextualized, because they're such a naughty shape. Rowan Atkinson (English comedian) has a song sketch about how he hates the French and how they bake their bread in such a naughty shape. That got linked here by me. We took the ball and ran with it. Redacted made it first appearance around then too.`)
+            .setTimestamp()
+            .setFooter('Made by Hachebe', client.user.avatarURL);
+        msg.channel.send(exampleEmbed);
+    }
     if (msg.content === '!introduction') {
         const exampleEmbed = new Discord.RichEmbed()
             .setColor('#0099ff')
