@@ -117,6 +117,10 @@ client.on('message', msg => {
         }
         msg.channel.send(attachment);
     }
+     if (msg.content === '!baby') {
+        const attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/690724839043891210/713065001786671164/15900248104026521-1.gif');
+        msg.channel.send(attachment);
+    }
     if(msg.content === '!heloisse') {
         getImage('71WUFaO', msg);
     }
