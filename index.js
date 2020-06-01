@@ -122,11 +122,20 @@ client.on('message', msg => {
         msg.channel.send(attachment);
     }
     if (msg.content === '!kissceline') {
-        const attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/647500826243497984/717005671429832791/ezgif.com-optimize-4.gif');
+        let attachment
+        if (msg.author.id === '428294204444114946') {
+            attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/717114831504801826/717114890287972403/novwifejudging.png');
+        } else {
+         attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/647500826243497984/717005671429832791/ezgif.com-optimize-4.gif');
+        }
         msg.channel.send(attachment);
     }
     if (msg.content === '!spiraling') {
         const attachment = new Discord.Attachment('https://media.discordapp.net/attachments/690724839043891210/709509112874139668/image0.jpg');
+        msg.channel.send(attachment);
+    }
+    if (msg.content === '!novkiss') {
+        const attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/647500826243497984/717112354784935946/novkiss.gif');
         msg.channel.send(attachment);
     }
     if(msg.content === '!heloisse') {
