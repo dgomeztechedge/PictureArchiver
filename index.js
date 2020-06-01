@@ -122,12 +122,7 @@ client.on('message', msg => {
         msg.channel.send(attachment);
     }
     if (msg.content === '!kissceline') {
-        let attachment
-        if (msg.author.id === '428294204444114946') {
-            attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/717114831504801826/717114890287972403/novwifejudging.png');
-        } else {
-         attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/647500826243497984/717005671429832791/ezgif.com-optimize-4.gif');
-        }
+        const attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/647500826243497984/717005671429832791/ezgif.com-optimize-4.gif');
         msg.channel.send(attachment);
     }
     if (msg.content === '!spiraling') {
