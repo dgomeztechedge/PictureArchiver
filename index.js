@@ -121,6 +121,10 @@ client.on('message', msg => {
         const attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/690724839043891210/713065001786671164/15900248104026521-1.gif');
         msg.channel.send(attachment);
     }
+    if (msg.content === '!kissceline') {
+        const attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/647500826243497984/717005671429832791/ezgif.com-optimize-4.gif');
+        msg.channel.send(attachment);
+    }
     if(msg.content === '!heloisse') {
         getImage('71WUFaO', msg);
     }
