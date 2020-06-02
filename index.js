@@ -129,7 +129,7 @@ client.on('message', msg => {
         const attachment = new Discord.Attachment('https://media.discordapp.net/attachments/690724839043891210/709509112874139668/image0.jpg');
         msg.channel.send(attachment);
     }
-    if (msg.content === '!novkiss') {
+    if (msg.content === '!kissnov') {
         const attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/647500826243497984/717112354784935946/novkiss.gif');
         msg.channel.send(attachment);
     }
