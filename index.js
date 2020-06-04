@@ -162,7 +162,7 @@ client.on('message', msg => {
             .setTitle('Help')
             .setDescription('Need help with the bot?')
             .addField('On #portrait-media', 'Pics and videos are archived on https://poalof-media.netlify.com/')
-            .addField("On #portrait-meta", "Add songs to our [p.28 playlist](https://open.spotify.com/playlist/2iPnFRSUoMEdu3Jxcf9XQp?si=qnvsRpyyT1OHxDoLpnIqoQ) by reacting to a song title with 🎵.")
+            .addField("On #portrait-playlist", "Add songs to our [p.28 playlist](https://open.spotify.com/playlist/2iPnFRSUoMEdu3Jxcf9XQp?si=qnvsRpyyT1OHxDoLpnIqoQ) by reacting to a song title with 🎵.")
             .addField('ML Bot', 'Send !heloisse, !marianne, !sophie or !comtesse to get a random pic of your favourite character!')
             .addField('Anywhere on the server', 'Archive messages directly to your DMs by reacting to any message with ⭐')
             .addField('Fun Stuff', 'Give the !tall and !baguette commands a try')
@@ -256,7 +256,7 @@ client.on('messageReactionAdd', (reaction, user) => {
             exampleEmbed.setImage(reaction.message.embeds[0].image.url)
         }
         user.send(exampleEmbed)
-    } else if (reaction.message.channel.name === 'portrait-meta' && reaction.emoji.name === '🎵') {
+    } else if (reaction.message.channel.name === 'portrait-playlist' && reaction.emoji.name === '🎵') {
         addTrack(reaction.message.content)
     } else return;
 })
