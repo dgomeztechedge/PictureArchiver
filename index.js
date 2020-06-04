@@ -137,6 +137,10 @@ client.on('message', msg => {
         const attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/647500826243497984/717148964901748736/Screen_Shot_2020-06-01_at_3.53.16_PM.png');
         msg.channel.send(attachment);
     }
+    if (msg.content === '!nonov') {
+        const attachment = new Discord.Attachment('https://cdn.discordapp.com/attachments/647500826243497984/717947278794424320/image0.gif');
+        msg.channel.send(attachment);
+    }
     if(msg.content === '!heloisse') {
         getImage('71WUFaO', msg);
     }
